@@ -24,7 +24,7 @@ HeapTableEngine::~HeapTableEngine()
   }
 
   if (data_buffer_pool_ != nullptr) {
-    data_buffer_pool_->close_file();
+    // data_buffer_pool_->close_file();
     data_buffer_pool_ = nullptr;
   }
 
