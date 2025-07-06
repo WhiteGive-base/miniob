@@ -136,15 +136,21 @@ RC Table::drop(const char *path){
     return RC::INTERNAL;
   }
 
-  string             data_file = table_data_file(base_dir_, table_meta_.name());
+  string             data_file = table_data_file(db_->path().c_str(), table_meta_.name());
   BufferPoolManager &bpm       = db_->buffer_pool_manager();
   bpm.remove_file(data_file.c_str());
+
+  if (data_buffer_pool_ != nullptr) {
+    // data_buffer_pool_->close_file();
+    data_buffer_pool_ = nullptr;
+  }
 
   if(record_handler_!= nullptr)
   {
     delete record_handler_;
     record_handler_= nullptr;
   }
+
   for(auto &index : indexes_){
     index->destroy();
     delete index;

@@ -130,8 +130,8 @@ public:
 private:
   Db       *db_ = nullptr;
   TableMeta table_meta_;
-  // DiskBufferPool    *data_buffer_pool_ = nullptr;  /// 数据文件关联的buffer pool
-  // RecordFileHandler *record_handler_   = nullptr;  /// 记录操作
-  // vector<Index *>    indexes_;
+  DiskBufferPool    *data_buffer_pool_ = nullptr;  /// 数据文件关联的buffer pool
+  RecordFileHandler *record_handler_   = nullptr;  /// 记录操作
+  vector<Index *>    indexes_;
   unique_ptr<TableEngine> engine_ = nullptr;
 };
