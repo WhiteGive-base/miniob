@@ -202,6 +202,8 @@ public:
    */
   RC close_file();
 
+  void remove_file();
+
   /**
    * 根据文件ID和页号获取指定页面到缓冲区，返回页面句柄指针。
    */
@@ -331,6 +333,8 @@ public:
   RC close_file(const char *file_name);
 
   RC flush_page(Frame &frame);
+
+  RC remove_file(const char *file_name);
 
   BPFrameManager    &get_frame_manager() { return frame_manager_; }
   DoubleWriteBuffer *get_dblwr_buffer() { return dblwr_buffer_.get(); }
