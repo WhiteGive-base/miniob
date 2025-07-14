@@ -13,13 +13,13 @@
         },
         {
             "label": "make",
-            "command": "make"
+            "command": "make -j32"
         },
         {
             "label": "CMake Build",
             "dependsOn": [
                 "cmake",
-                "make"
+                "make -j32"
             ]
         }
     ],
